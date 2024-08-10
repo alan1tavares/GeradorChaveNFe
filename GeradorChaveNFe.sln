@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorChaveNFe", "GeradorChaveNFe\GeradorChaveNFe.csproj", "{4154E183-692B-4AAB-BA81-AF2AB668600F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4154E183-692B-4AAB-BA81-AF2AB668600F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4154E183-692B-4AAB-BA81-AF2AB668600F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4154E183-692B-4AAB-BA81-AF2AB668600F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4154E183-692B-4AAB-BA81-AF2AB668600F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A65C5222-C8B0-4E99-BF60-5865EE660647}
+	EndGlobalSection
+EndGlobal
