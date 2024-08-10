@@ -1,9 +1,10 @@
-﻿<Window x:Class="GeradorChaveNFe.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeradorChaveNFe"
+        xmlns:Collections="clr-namespace:System.Collections;assembly=System.Runtime" x:Class="GeradorChaveNFe.MainWindow"
         mc:Ignorable="d"
         Title="Gerador Chave NFe" Height="450" Width="800" ResizeMode="CanMinimize">
     <Grid>
@@ -13,7 +14,8 @@
         </Grid.ColumnDefinitions>
         <StackPanel Margin="10,10,0,0" Width="256" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Label Content="UF:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4" Padding="0,0,0,0"/>
-            <ComboBox Width="256" Margin="0,0,0,8"/>
+            <ComboBox x:Name="uFComboBox" Width="256" Margin="0,0,0,8">
+            </ComboBox>
 
             <Grid VerticalAlignment="Top" Margin="0,0,0,8" Width="256" HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
@@ -47,12 +49,12 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Width="auto">
-                        <Label Padding="0" Margin="0,0,0,4">Inicial</Label>
-                        <TextBox></TextBox>
+                        <Label Padding="0" Margin="0,0,0,4" Content="Inicial"/>
+                        <TextBox/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" Width="auto">
-                        <Label Padding="0" Margin="0,0,0,4">Final</Label>
-                        <TextBox></TextBox>
+                        <Label Padding="0" Margin="0,0,0,4" Content="Final"/>
+                        <TextBox/>
                     </StackPanel>
                 </Grid>
             </GroupBox>

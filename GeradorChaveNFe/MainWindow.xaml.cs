@@ -19,6 +19,10 @@ namespace GeradorChaveNFe
         public MainWindow()
         {
             InitializeComponent();
+
+            uFComboBox.ItemsSource = ComboBoxUfRepository.GetItems();
+            uFComboBox.DisplayMemberPath = "Nome";
+            uFComboBox.SelectedValue = "Codigo";
         }
     }
 }
