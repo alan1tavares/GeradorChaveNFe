@@ -44,7 +44,7 @@
                     random.Next(1, 99999999) : nfeIpunt.CodigoNumerico[i - nfeIpunt.NumeroNotaInicial];
                  
                 var numeroNfe = i;
-                var chave = $"{nfeIpunt.CodigoUf}{ano}{nfeIpunt.Mes}{nfeIpunt.CNPJ}{modeloNFe}" +
+                var chave = $"{nfeIpunt.CodigoUf}{ano}{nfeIpunt.Mes:00}{nfeIpunt.CNPJ}{modeloNFe}" +
                     $"{nfeIpunt.Serie:000}{numeroNfe:000000000}{emissaoNormal}" +
                     $"{codigoNumerico:00000000}";
                 int dv = calcularDigitoVerificador(chave);

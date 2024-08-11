@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GeradorChaveNFe"
         xmlns:Collections="clr-namespace:System.Collections;assembly=System.Runtime" x:Class="GeradorChaveNFe.MainWindow"
         mc:Ignorable="d"
-        Title="Gerador Chave NFe" Height="350" Width="587" ResizeMode="CanMinimize">
+        Title="Gerador Chave NFe" Height="350" Width="625" ResizeMode="CanMinimize">
     <DockPanel VerticalAlignment="Top">
         <StackPanel Margin="10,10,16,0" Width="256" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Label Content="UF:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4" Padding="0,0,0,0"/>
@@ -21,20 +21,20 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="auto"
                         Grid.Column="0">
                     <Label Content="Mês:" Padding="0,0,0,4"/>
-                    <TextBox TextWrapping="Wrap"/>
+                    <TextBox x:Name="mesTextBox" TextWrapping="Wrap"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" 
                         Width="auto" Grid.Column="3">
                     <Label Content="Ano:" Padding="0,0,0,4" VerticalAlignment="Top"/>
-                    <TextBox TextWrapping="Wrap" Width="auto" VerticalAlignment="Top"/>
+                    <TextBox x:Name="anoTextBox" TextWrapping="Wrap" Width="auto" VerticalAlignment="Top"/>
                 </StackPanel>
             </Grid>
 
             <Label Content="CNPJ:" HorizontalAlignment="Left" Margin="0,0,0,4" VerticalAlignment="Top" Padding="0,0,0,0"/>
-            <TextBox HorizontalAlignment="Left" Margin="0,0,0,8" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+            <TextBox x:Name="cnpjTextBox" HorizontalAlignment="Left" Margin="0,0,0,8" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
 
             <Label Content="Série" HorizontalAlignment="Left" Margin="0,0,0,4" VerticalAlignment="Top" Padding="0,0,0,0"/>
-            <TextBox HorizontalAlignment="Left" Margin="0,0,0,8" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+            <TextBox x:Name="serieTextBox" HorizontalAlignment="Left" Margin="0,0,0,8" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
 
             <GroupBox Header="Número da Nota" Margin="0,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Top" Width="256">
                 <Grid VerticalAlignment="Top" Width="Auto">
@@ -45,22 +45,21 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Width="auto">
                         <Label Padding="0" Margin="0,0,0,4" Content="Inicial"/>
-                        <TextBox/>
+                        <TextBox x:Name="numeroNotaInicialTextBox"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" Width="auto">
                         <Label Padding="0" Margin="0,0,0,4" Content="Final"/>
-                        <TextBox/>
+                        <TextBox x:Name="numeroNotaFinalTextBox"/>
                     </StackPanel>
                 </Grid>
             </GroupBox>
             <Button Content="Gerar Chaves" HorizontalAlignment="Left" Margin="0,0,0,16" 
                 VerticalAlignment="Top" Width="256" Click="Button_Click"/>
         </StackPanel>
-        <DockPanel Grid.Column="1" Width="256" Margin="10,10,0,16" HorizontalAlignment="Left">
+        <DockPanel Grid.Column="1" Width="296" Margin="10,10,0,16" HorizontalAlignment="Left">
             <Label Content="Chaves NFe" Margin="0,0,0,4" Padding="0,0,0,0" DockPanel.Dock="Top"/>
-            <TextBox TextWrapping="Wrap" AcceptsReturn="True" 
-                     VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="#EEEEEE"
-                     Text="Teste"/>
+            <TextBox x:Name="chavesTextBox" TextWrapping="Wrap" AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="#EEEEEE"/>
         </DockPanel>
     </DockPanel>
 </Window>

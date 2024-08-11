@@ -23,12 +23,27 @@ namespace GeradorChaveNFe
 
             uFComboBox.ItemsSource = UfRepository.GetItems();
             uFComboBox.DisplayMemberPath = "Nome";
-            uFComboBox.SelectedValue = "Codigo";
+            uFComboBox.SelectedValuePath = "Codigo";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var nfeInput = new NfeIpunt
+            {
+                CodigoUf = (int) uFComboBox.SelectedValue,
+                Mes = int.Parse(mesTextBox.Text),
+                Ano = int.Parse(anoTextBox.Text),
+                CNPJ = cnpjTextBox.Text,
+                Serie = int.Parse(serieTextBox.Text),
+                NumeroNotaInicial = int.Parse(numeroNotaInicialTextBox.Text),
+                NumeroNotaFinal = int.Parse(numeroNotaFinalTextBox.Text),
+            };
 
+            var chaves = ChaveNfeUseCase.Gerar(nfeInput);
+            foreach (var item in chaves)
+            {
+                chavesTextBox.AppendText(item + "\n");
+            }
         }
     }
 }
