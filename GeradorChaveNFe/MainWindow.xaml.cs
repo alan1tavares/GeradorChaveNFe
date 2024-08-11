@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UseCase;
 
 namespace GeradorChaveNFe
 {
@@ -20,9 +21,14 @@ namespace GeradorChaveNFe
         {
             InitializeComponent();
 
-            uFComboBox.ItemsSource = ComboBoxUfRepository.GetItems();
+            uFComboBox.ItemsSource = UfRepository.GetItems();
             uFComboBox.DisplayMemberPath = "Nome";
             uFComboBox.SelectedValue = "Codigo";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
