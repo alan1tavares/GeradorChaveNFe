@@ -6,16 +6,11 @@
         xmlns:local="clr-namespace:GeradorChaveNFe"
         xmlns:Collections="clr-namespace:System.Collections;assembly=System.Runtime" x:Class="GeradorChaveNFe.MainWindow"
         mc:Ignorable="d"
-        Title="Gerador Chave NFe" Height="450" Width="800" ResizeMode="CanMinimize">
-    <Grid VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Margin="10,10,0,0" Width="256" HorizontalAlignment="Left" VerticalAlignment="Top">
+        Title="Gerador Chave NFe" Height="350" Width="587" ResizeMode="CanMinimize">
+    <DockPanel VerticalAlignment="Top">
+        <StackPanel Margin="10,10,16,0" Width="256" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Label Content="UF:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4" Padding="0,0,0,0"/>
-            <ComboBox x:Name="uFComboBox" Width="256" Margin="0,0,0,8">
-            </ComboBox>
+            <ComboBox x:Name="uFComboBox" Width="256" Margin="0,0,0,8"/>
 
             <Grid VerticalAlignment="Top" Margin="0,0,0,8" Width="256" HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
@@ -67,5 +62,5 @@
                      VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="#EEEEEE"
                      Text="Teste"/>
         </DockPanel>
-    </Grid>
+    </DockPanel>
 </Window>
