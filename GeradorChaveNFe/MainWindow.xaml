@@ -7,7 +7,7 @@
         xmlns:Collections="clr-namespace:System.Collections;assembly=System.Runtime" x:Class="GeradorChaveNFe.MainWindow"
         mc:Ignorable="d"
         Title="Gerador Chave NFe" Height="450" Width="800" ResizeMode="CanMinimize">
-    <Grid>
+    <Grid VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -58,8 +58,14 @@
                     </StackPanel>
                 </Grid>
             </GroupBox>
-            <Button Content="Gerar Chaves" HorizontalAlignment="Left" Margin="0,0,0,0" 
+            <Button Content="Gerar Chaves" HorizontalAlignment="Left" Margin="0,0,0,16" 
                 VerticalAlignment="Top" Width="256"/>
         </StackPanel>
+        <DockPanel Grid.Column="1" Width="256" Margin="10,10,0,16" HorizontalAlignment="Left">
+            <Label Content="Chaves NFe" Margin="0,0,0,4" Padding="0,0,0,0" DockPanel.Dock="Top"/>
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="#EEEEEE"
+                     Text="Teste"/>
+        </DockPanel>
     </Grid>
 </Window>
