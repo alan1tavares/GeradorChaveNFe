@@ -26,6 +26,8 @@ Tests require no external services. All builds target `win-x64`.
 
 ## Architecture
 
+**Mac note:** `GeradorChaveNFe/` (WPF) only compiles on Windows. On Mac, trabalhe com `UseCase/` e `Teste/` normalmente — o projeto WPF é publicado via CI no Windows.
+
 Three projects in one solution:
 
 ```
