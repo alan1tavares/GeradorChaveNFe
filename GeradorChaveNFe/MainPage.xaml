@@ -125,14 +125,53 @@
                     </Grid>
                 </Border>
 
-                <Border Stroke="#8B7B6E" StrokeThickness="1" Padding="10" Margin="0,4,0,4">
-                    <VerticalStackLayout Spacing="6">
+                <Border Stroke="#8B7B6E" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="10" Margin="0,4,0,4">
+                    <VerticalStackLayout Spacing="8">
                         <Label Text="Número da Nota:" TextColor="White" FontAttributes="Bold" />
-                        <Grid ColumnDefinitions="*,8,*" RowDefinitions="Auto,Auto" RowSpacing="4">
-                            <Label Grid.Column="0" Grid.Row="0" Text="Inicial:" TextColor="White" />
-                            <Entry Grid.Column="0" Grid.Row="1" x:Name="numeroNotaInicialEntry" Keyboard="Numeric" />
-                            <Label Grid.Column="2" Grid.Row="0" Text="Final:" TextColor="White" />
-                            <Entry Grid.Column="2" Grid.Row="1" x:Name="numeroNotaFinalEntry" Keyboard="Numeric" />
+                        <Grid ColumnDefinitions="*,12,*" ColumnSpacing="0">
+
+                            <!-- Inicial -->
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label Text="Inicial:" TextColor="White" />
+                                <Border BackgroundColor="White"
+                                        Stroke="Transparent"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        Padding="4,0">
+                                    <Grid ColumnDefinitions="Auto,*">
+                                        <Label Grid.Column="0" Text="→" FontSize="15"
+                                               TextColor="#555555"
+                                               VerticalOptions="Center" Margin="6,0,4,0" />
+                                        <Entry Grid.Column="1" x:Name="numeroNotaInicialEntry"
+                                               Keyboard="Numeric"
+                                               BackgroundColor="Transparent"
+                                               TextColor="#333333" />
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <!-- Final -->
+                            <VerticalStackLayout Grid.Column="2" Spacing="4">
+                                <Label Text="Final:" TextColor="White" />
+                                <Border BackgroundColor="White"
+                                        Stroke="Transparent"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        Padding="4,0">
+                                    <Grid ColumnDefinitions="Auto,*">
+                                        <Label Grid.Column="0" Text="→" FontSize="15"
+                                               TextColor="#555555"
+                                               VerticalOptions="Center" Margin="6,0,4,0" />
+                                        <Entry Grid.Column="1" x:Name="numeroNotaFinalEntry"
+                                               Keyboard="Numeric"
+                                               BackgroundColor="Transparent"
+                                               TextColor="#333333" />
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
