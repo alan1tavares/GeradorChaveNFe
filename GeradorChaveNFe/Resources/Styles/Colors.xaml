@@ -6,6 +6,16 @@
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
     <Color x:Key="Primary">#512BD4</Color>
+
+    <!-- App colors -->
+    <Color x:Key="FormBackground">#6B5B4E</Color>
+    <Color x:Key="ResultBackground">#F2F2F2</Color>
+    <Color x:Key="AccentPurple">#7B5EA7</Color>
+    <Color x:Key="InputText">#333333</Color>
+    <Color x:Key="PlaceholderText">#888888</Color>
+    <Color x:Key="MetaText">#888888</Color>
+    <Color x:Key="StatusText">#555555</Color>
+    <Color x:Key="GroupBorderColor">#8B7B6E</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>

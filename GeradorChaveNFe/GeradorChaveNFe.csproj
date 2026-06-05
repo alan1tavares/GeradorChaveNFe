@@ -10,8 +10,6 @@
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <MauiXamlInflator>SourceGen</MauiXamlInflator>
-
     <ApplicationTitle>Gerador Chave NFe</ApplicationTitle>
     <ApplicationId>com.alantavares.geradorchavenfе</ApplicationId>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -28,6 +26,7 @@
     <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/appiconfg.svg" Color="#512BD4" />
     <MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#512BD4" BaseSize="128,128" />
     <MauiFont Include="Resources/Fonts/*" />
+    <MauiImage Include="Resources/Images/*" />
   </ItemGroup>
 
   <ItemGroup>
