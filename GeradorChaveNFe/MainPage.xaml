@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GeradorChaveNFe.MainPage">
+
+    <Grid ColumnDefinitions="380,*" RowDefinitions="*" ColumnSpacing="0">
+
+        <!-- ── Painel esquerdo: formulário ── -->
+        <Grid Grid.Column="0" RowDefinitions="*" BackgroundColor="{StaticResource FormBackground}">
+            <VerticalStackLayout Spacing="12" Padding="20" VerticalOptions="Start">
+
+                <Label Text="Configurações do Gerador"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       Margin="0,0,0,8" />
+
+                <!-- UF -->
+                <Label Text="UF:" Style="{StaticResource FormLabelStyle}" />
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Image Grid.Column="0"
+                               Source="brazil_ico.png"
+                               HeightRequest="22" WidthRequest="22"
+                               VerticalOptions="Center"
+                               Margin="6,0,4,0" />
+                        <Picker Grid.Column="1"
+                                x:Name="uFPicker"
+                                Title="Selecione o estado (ex: SP)"
+                                ItemDisplayBinding="{Binding Nome}"
+                                BackgroundColor="Transparent"
+                                TextColor="{StaticResource InputText}"
+                                TitleColor="{StaticResource PlaceholderText}" />
+                    </Grid>
+                </Border>
+
+                <!-- Data -->
+                <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="Auto,Auto" RowSpacing="4">
+                    <Label Grid.Column="0" Grid.Row="0" Text="Data (Mês/Ano)" Style="{StaticResource FormLabelStyle}" />
+                    <Label Grid.Column="2" Grid.Row="0" Text="Ano:" Style="{StaticResource FormLabelStyle}" />
+
+                    <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource InputBorderStyle}">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Grid.Column="0" Text="📅" Style="{StaticResource InputIconStyle}" />
+                            <Entry Grid.Column="1" x:Name="mesEntry"
+                                   Keyboard="Numeric" Placeholder="01-12"
+                                   Style="{StaticResource InputEntryStyle}" />
+                        </Grid>
+                    </Border>
+
+                    <Label Grid.Column="1" Grid.Row="1" Text="/"
+                           TextColor="White" FontSize="20"
+                           VerticalOptions="Center" Margin="6,0" />
+
+                    <Border Grid.Column="2" Grid.Row="1" Style="{StaticResource InputBorderStyle}">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Grid.Column="0" Text="🕐" Style="{StaticResource InputIconStyle}" />
+                            <Entry Grid.Column="1" x:Name="anoEntry"
+                                   Keyboard="Numeric" Placeholder="YYYY"
+                                   Style="{StaticResource InputEntryStyle}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- CNPJ -->
+                <Label Text="Empresa (CNPJ):" Style="{StaticResource FormLabelStyle}" />
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Grid.Column="0" Text="🏢" Style="{StaticResource InputIconStyle}" />
+                        <Entry Grid.Column="1" x:Name="cnpjEntry"
+                               Keyboard="Numeric"
+                               Placeholder="00.000.000/0000-00"
+                               TextChanged="OnCnpjTextChanged"
+                               Style="{StaticResource InputEntryStyle}" />
+                    </Grid>
+                </Border>
+
+                <!-- Série -->
+                <Label Text="Documento (Série):" Style="{StaticResource FormLabelStyle}" />
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Grid.Column="0" Text="📄" Style="{StaticResource InputIconStyle}" />
+                        <Entry Grid.Column="1" x:Name="serieEntry"
+                               Keyboard="Numeric"
+                               Style="{StaticResource InputEntryStyle}" />
+                    </Grid>
+                </Border>
+
+                <!-- Número da Nota -->
+                <Border Stroke="{StaticResource GroupBorderColor}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="10" Margin="0,4,0,4">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Número da Nota:" Style="{StaticResource FormLabelStyle}" FontAttributes="Bold" />
+                        <Grid ColumnDefinitions="*,12,*">
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label Text="Inicial:" Style="{StaticResource FormLabelStyle}" />
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <Grid ColumnDefinitions="Auto,*">
+                                        <Label Grid.Column="0" Text="→" TextColor="#555555" Style="{StaticResource InputIconStyle}" />
+                                        <Entry Grid.Column="1" x:Name="numeroNotaInicialEntry"
+                                               Keyboard="Numeric"
+                                               Style="{StaticResource InputEntryStyle}" />
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="2" Spacing="4">
+                                <Label Text="Final:" Style="{StaticResource FormLabelStyle}" />
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <Grid ColumnDefinitions="Auto,*">
+                                        <Label Grid.Column="0" Text="→" TextColor="#555555" Style="{StaticResource InputIconStyle}" />
+                                        <Entry Grid.Column="1" x:Name="numeroNotaFinalEntry"
+                                               Keyboard="Numeric"
+                                               Style="{StaticResource InputEntryStyle}" />
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Botões -->
+                <Grid ColumnDefinitions="*,8,*" Margin="0,8,0,0">
+                    <Button Grid.Column="0"
+                            Text="🗑️ Limpar Formulário"
+                            Clicked="OnLimparFormularioClicked"
+                            BackgroundColor="Transparent"
+                            BorderColor="White"
+                            BorderWidth="1"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="8" />
+                    <Button Grid.Column="2"
+                            Text="⚙️ Gerar Chaves"
+                            Clicked="OnGerarChavesClicked"
+                            BackgroundColor="{StaticResource AccentPurple}"
+                            TextColor="White"
+                            FontSize="12"
+                            BorderWidth="0"
+                            CornerRadius="8" />
+                </Grid>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- ── Painel direito: resultado ── -->
+        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*,Auto"
+              BackgroundColor="{StaticResource ResultBackground}"
+              Padding="20" RowSpacing="8">
+
+            <!-- Cabeçalho -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0"
+                       Text="📄 Chaves NFe Geradas"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Button Grid.Column="1"
+                        Text="📋 Copiar Tudo"
+                        Clicked="OnCopiarTudoClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource StatusText}"
+                        FontSize="13"
+                        BorderWidth="0"
+                        Padding="0" />
+            </Grid>
+
+            <!-- Metadados -->
+            <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0" Text="Editor" Style="{StaticResource MetaLabelStyle}" />
+                <Label Grid.Column="1" x:Name="totalLabel"
+                       Text="Total: 0 chaves"
+                       Style="{StaticResource MetaLabelStyle}" />
+            </Grid>
+
+            <!-- Editor -->
+            <Editor Grid.Row="2"
+                    x:Name="chavesEditor"
+                    IsReadOnly="True"
+                    BackgroundColor="White"
+                    TextColor="{StaticResource InputText}"
+                    FontFamily="OpenSansRegular"
+                    VerticalOptions="Fill" />
+
+            <!-- Status -->
+            <Label Grid.Row="3"
+                   x:Name="statusLabel"
+                   Text=""
+                   Style="{StaticResource StatusLabelStyle}" />
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

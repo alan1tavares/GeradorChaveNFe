@@ -7,28 +7,52 @@ on:
 
 env:
   PROJECT_PATH: GeradorChaveNFe/GeradorChaveNFe.csproj
-  PUBLISH_PATH: GeradorChaveNFe/bin/Release/net8.0-windows/win-x64/publish
 
 jobs:
-  deploy:
+  deploy-mac:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.x
+
+      - run: dotnet workload install maui
+
+      - run: dotnet publish ${{ env.PROJECT_PATH }} -f net10.0-maccatalyst -c Release
+
+      - name: Zip .app bundle
+        run: |
+          APP=$(find GeradorChaveNFe/bin/Release/net10.0-maccatalyst -name "*.app" | head -1)
+          zip -r GeradorChaveNFe-mac.zip "$APP" LICENSE
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: GeradorChaveNFe-mac.zip
+
+  deploy-windows:
     runs-on: windows-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.x
-      - run: dotnet restore ${{ env.PROJECT_PATH }} -r win-x64
-      - run: dotnet build ${{ env.PROJECT_PATH }} --no-restore -c Release -p:PublishSingleFile=true --self-contained
-      - run: dotnet publish ${{ env.PROJECT_PATH }} --no-build -c Release -p:PublishSingleFile=true --self-contained
-      - run: rm ${{ env.PUBLISH_PATH }}/*.pdb
-      - run: Compress-Archive -Path ${{ env.PUBLISH_PATH }}/*, ./LICENSE -DestinationPath ./GeradorChaveNFe.zip
+          dotnet-version: 10.x
+
+      - run: dotnet workload install maui
+
+      - run: dotnet publish ${{ env.PROJECT_PATH }} -f net10.0-windows10.0.19041.0 -c Release --self-contained
+
+      - name: Zip publish output
+        run: |
+          $pub = Get-ChildItem -Path "GeradorChaveNFe/bin/Release/net10.0-windows10.0.19041.0" -Recurse -Directory -Filter "publish" | Select-Object -First 1
+          Compress-Archive -Path "$($pub.FullName)\*", ".\LICENSE" -DestinationPath .\GeradorChaveNFe-windows.zip
 
       - uses: softprops/action-gh-release@v2
         with:
-          files: |
-            ./GeradorChaveNFe.zip
-
-
+          files: GeradorChaveNFe-windows.zip
