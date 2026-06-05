@@ -200,16 +200,53 @@
         </Grid>
 
         <!-- Painel direito: resultado -->
-        <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto" BackgroundColor="#F2F2F2" Padding="20" RowSpacing="8">
+        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*,Auto" BackgroundColor="#F2F2F2" Padding="20" RowSpacing="8">
 
-            <Label Grid.Row="0" Text="Chaves NFe:" FontAttributes="Bold" FontSize="18" />
+            <!-- Tarefa 10: cabeçalho com título e botão Copiar Tudo -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0"
+                       Text="📄 Chaves NFe Geradas"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Button Grid.Column="1"
+                        Text="📋 Copiar Tudo"
+                        Clicked="OnCopiarTudoClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#555555"
+                        FontSize="13"
+                        BorderWidth="0"
+                        Padding="0" />
+            </Grid>
 
-            <Editor Grid.Row="1"
+            <!-- Tarefa 11: barra de metadados -->
+            <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0"
+                       Text="Editor"
+                       TextColor="#888888"
+                       FontSize="12" />
+                <Label Grid.Column="1"
+                       x:Name="totalLabel"
+                       Text="Total: 0 chaves"
+                       TextColor="#888888"
+                       FontSize="12" />
+            </Grid>
+
+            <!-- Editor -->
+            <Editor Grid.Row="2"
                     x:Name="chavesEditor"
                     IsReadOnly="True"
                     BackgroundColor="White"
+                    TextColor="#333333"
                     FontFamily="OpenSansRegular"
                     VerticalOptions="Fill" />
+
+            <!-- Tarefa 12: barra de status -->
+            <Label Grid.Row="3"
+                   x:Name="statusLabel"
+                   Text=""
+                   TextColor="#555555"
+                   FontSize="13" />
 
         </Grid>
 

@@ -38,6 +38,14 @@ public partial class MainPage : ContentPage
         numeroNotaInicialEntry.Text = string.Empty;
         numeroNotaFinalEntry.Text = string.Empty;
         chavesEditor.Text = string.Empty;
+        totalLabel.Text = "Total: 0 chaves";
+        statusLabel.Text = string.Empty;
+    }
+
+    private async void OnCopiarTudoClicked(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(chavesEditor.Text)) return;
+        await Clipboard.SetTextAsync(chavesEditor.Text);
     }
 
     private void OnGerarChavesClicked(object sender, EventArgs e)
@@ -58,5 +66,7 @@ public partial class MainPage : ContentPage
 
         var chaves = ChaveNfeUseCase.Gerar(nfeInput);
         chavesEditor.Text = string.Join("\n", chaves);
+        totalLabel.Text = $"Total: {chaves.Count} chaves";
+        statusLabel.Text = $"✓ {chaves.Count} chaves geradas com sucesso.";
     }
 }
