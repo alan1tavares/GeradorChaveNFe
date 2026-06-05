@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="GeradorChaveNFe/GeradorChaveNFe.csproj" />
+  <Project Path="Teste/Teste.csproj" />
+  <Project Path="UseCase/UseCase.csproj" />
+</Solution>
