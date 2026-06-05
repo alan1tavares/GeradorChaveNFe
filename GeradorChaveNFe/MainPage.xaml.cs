@@ -4,15 +4,20 @@ namespace GeradorChaveNFe;
 
 public partial class MainPage : ContentPage
 {
+    private Label _totalLabel = null!;
+    private Label _statusLabel = null!;
+
     public MainPage()
     {
         InitializeComponent();
         uFPicker.ItemsSource = UfRepository.GetItems();
+        _totalLabel = this.FindByName<Label>("totalLabel");
+        _statusLabel = this.FindByName<Label>("statusLabel");
     }
 
-    private void OnCnpjTextChanged(object sender, TextChangedEventArgs e)
+    private void OnCnpjTextChanged(object? sender, TextChangedEventArgs e)
     {
-        var entry = (Entry)sender;
+        var entry = (Entry)sender!;
         var digits = new string(e.NewTextValue.Where(char.IsDigit).Take(14).ToArray());
 
         var formatted = digits.Length switch
@@ -28,7 +33,7 @@ public partial class MainPage : ContentPage
             entry.Text = formatted;
     }
 
-    private void OnLimparFormularioClicked(object sender, EventArgs e)
+    private void OnLimparFormularioClicked(object? sender, EventArgs e)
     {
         uFPicker.SelectedIndex = -1;
         mesEntry.Text = string.Empty;
@@ -38,17 +43,17 @@ public partial class MainPage : ContentPage
         numeroNotaInicialEntry.Text = string.Empty;
         numeroNotaFinalEntry.Text = string.Empty;
         chavesEditor.Text = string.Empty;
-        totalLabel.Text = "Total: 0 chaves";
-        statusLabel.Text = string.Empty;
+        _totalLabel.Text = "Total: 0 chaves";
+        _statusLabel.Text = string.Empty;
     }
 
-    private async void OnCopiarTudoClicked(object sender, EventArgs e)
+    private async void OnCopiarTudoClicked(object? sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(chavesEditor.Text)) return;
         await Clipboard.SetTextAsync(chavesEditor.Text);
     }
 
-    private void OnGerarChavesClicked(object sender, EventArgs e)
+    private void OnGerarChavesClicked(object? sender, EventArgs e)
     {
         if (uFPicker.SelectedItem is not UFModel uf)
             return;
@@ -66,7 +71,7 @@ public partial class MainPage : ContentPage
 
         var chaves = ChaveNfeUseCase.Gerar(nfeInput);
         chavesEditor.Text = string.Join("\n", chaves);
-        totalLabel.Text = $"Total: {chaves.Count} chaves";
-        statusLabel.Text = $"✓ {chaves.Count} chaves geradas com sucesso.";
+        _totalLabel.Text = $"Total: {chaves.Count} chaves";
+        _statusLabel.Text = $"✓ {chaves.Count} chaves geradas com sucesso.";
     }
 }

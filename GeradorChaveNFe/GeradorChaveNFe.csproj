@@ -10,8 +10,6 @@
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <MauiXamlInflator>SourceGen</MauiXamlInflator>
-
     <ApplicationTitle>Gerador Chave NFe</ApplicationTitle>
     <ApplicationId>com.alantavares.geradorchavenfе</ApplicationId>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
