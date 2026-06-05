@@ -17,8 +17,27 @@
                        Margin="0,0,0,8" />
 
                 <Label Text="UF:" TextColor="White" />
-                <Picker x:Name="uFPicker" Title="Selecione o estado"
-                        ItemDisplayBinding="{Binding Nome}" />
+                <Border BackgroundColor="White"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="4,0">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Image Grid.Column="0"
+                               Source="brazil_ico.png"
+                               HeightRequest="22"
+                               WidthRequest="22"
+                               VerticalOptions="Center"
+                               Margin="6,0,4,0" />
+                        <Picker Grid.Column="1"
+                                x:Name="uFPicker"
+                                Title="Selecione o estado (ex: SP)"
+                                ItemDisplayBinding="{Binding Nome}"
+                                BackgroundColor="Transparent"
+                                TextColor="#333333"
+                                TitleColor="#888888" />
+                    </Grid>
+                </Border>
 
                 <Grid ColumnDefinitions="*,8,*" RowDefinitions="Auto,Auto" RowSpacing="4">
                     <Label Grid.Column="0" Grid.Row="0" Text="Mês:" TextColor="White" />
