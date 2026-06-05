@@ -89,11 +89,41 @@
 
                 </Grid>
 
-                <Label Text="CNPJ:" TextColor="White" />
-                <Entry x:Name="cnpjEntry" Keyboard="Numeric" />
+                <Label Text="Empresa (CNPJ):" TextColor="White" />
+                <Border BackgroundColor="White"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="4,0">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Grid.Column="0" Text="🏢" FontSize="15"
+                               VerticalOptions="Center" Margin="6,0,4,0" />
+                        <Entry Grid.Column="1" x:Name="cnpjEntry"
+                               Keyboard="Numeric"
+                               Placeholder="00.000.000/0000-00"
+                               BackgroundColor="Transparent"
+                               TextColor="#333333"
+                               PlaceholderColor="#888888"
+                               TextChanged="OnCnpjTextChanged" />
+                    </Grid>
+                </Border>
 
-                <Label Text="Série:" TextColor="White" />
-                <Entry x:Name="serieEntry" Keyboard="Numeric" />
+                <Label Text="Documento (Série):" TextColor="White" />
+                <Border BackgroundColor="White"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="4,0">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Grid.Column="0" Text="📄" FontSize="15"
+                               VerticalOptions="Center" Margin="6,0,4,0" />
+                        <Entry Grid.Column="1" x:Name="serieEntry"
+                               Keyboard="Numeric"
+                               BackgroundColor="Transparent"
+                               TextColor="#333333"
+                               PlaceholderColor="#888888" />
+                    </Grid>
+                </Border>
 
                 <Border Stroke="#8B7B6E" StrokeThickness="1" Padding="10" Margin="0,4,0,4">
                     <VerticalStackLayout Spacing="6">
