@@ -5,28 +5,23 @@
 
     <Grid ColumnDefinitions="380,*" RowDefinitions="*" ColumnSpacing="0">
 
-        <!-- Painel esquerdo: formulário -->
-        <Grid Grid.Column="0" RowDefinitions="*" BackgroundColor="#6B5B4E">
+        <!-- ── Painel esquerdo: formulário ── -->
+        <Grid Grid.Column="0" RowDefinitions="*" BackgroundColor="{StaticResource FormBackground}">
             <VerticalStackLayout Spacing="12" Padding="20" VerticalOptions="Start">
 
-                <!-- Tarefa 2: título do painel -->
                 <Label Text="Configurações do Gerador"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="White"
                        Margin="0,0,0,8" />
 
-                <Label Text="UF:" TextColor="White" />
-                <Border BackgroundColor="White"
-                        Stroke="Transparent"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 8"
-                        Padding="4,0">
+                <!-- UF -->
+                <Label Text="UF:" Style="{StaticResource FormLabelStyle}" />
+                <Border Style="{StaticResource InputBorderStyle}">
                     <Grid ColumnDefinitions="Auto,*">
                         <Image Grid.Column="0"
                                Source="brazil_ico.png"
-                               HeightRequest="22"
-                               WidthRequest="22"
+                               HeightRequest="22" WidthRequest="22"
                                VerticalOptions="Center"
                                Margin="6,0,4,0" />
                         <Picker Grid.Column="1"
@@ -34,148 +29,98 @@
                                 Title="Selecione o estado (ex: SP)"
                                 ItemDisplayBinding="{Binding Nome}"
                                 BackgroundColor="Transparent"
-                                TextColor="#333333"
-                                TitleColor="#888888" />
+                                TextColor="{StaticResource InputText}"
+                                TitleColor="{StaticResource PlaceholderText}" />
                     </Grid>
                 </Border>
 
+                <!-- Data -->
                 <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="Auto,Auto" RowSpacing="4">
+                    <Label Grid.Column="0" Grid.Row="0" Text="Data (Mês/Ano)" Style="{StaticResource FormLabelStyle}" />
+                    <Label Grid.Column="2" Grid.Row="0" Text="Ano:" Style="{StaticResource FormLabelStyle}" />
 
-                    <Label Grid.Column="0" Grid.Row="0" Text="Data (Mês/Ano)" TextColor="White" />
-                    <Label Grid.Column="2" Grid.Row="0" Text="Ano:" TextColor="White" />
-
-                    <!-- Campo Mês -->
-                    <Border Grid.Column="0" Grid.Row="1"
-                            BackgroundColor="White"
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 8"
-                            Padding="4,0">
+                    <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource InputBorderStyle}">
                         <Grid ColumnDefinitions="Auto,*">
-                            <Label Grid.Column="0" Text="📅" FontSize="15"
-                                   VerticalOptions="Center" Margin="6,0,4,0" />
+                            <Label Grid.Column="0" Text="📅" Style="{StaticResource InputIconStyle}" />
                             <Entry Grid.Column="1" x:Name="mesEntry"
-                                   Keyboard="Numeric"
-                                   Placeholder="01-12"
-                                   BackgroundColor="Transparent"
-                                   TextColor="#333333"
-                                   PlaceholderColor="#888888" />
+                                   Keyboard="Numeric" Placeholder="01-12"
+                                   Style="{StaticResource InputEntryStyle}" />
                         </Grid>
                     </Border>
 
-                    <!-- Separador -->
                     <Label Grid.Column="1" Grid.Row="1" Text="/"
                            TextColor="White" FontSize="20"
                            VerticalOptions="Center" Margin="6,0" />
 
-                    <!-- Campo Ano -->
-                    <Border Grid.Column="2" Grid.Row="1"
-                            BackgroundColor="White"
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 8"
-                            Padding="4,0">
+                    <Border Grid.Column="2" Grid.Row="1" Style="{StaticResource InputBorderStyle}">
                         <Grid ColumnDefinitions="Auto,*">
-                            <Label Grid.Column="0" Text="🕐" FontSize="15"
-                                   VerticalOptions="Center" Margin="6,0,4,0" />
+                            <Label Grid.Column="0" Text="🕐" Style="{StaticResource InputIconStyle}" />
                             <Entry Grid.Column="1" x:Name="anoEntry"
-                                   Keyboard="Numeric"
-                                   Placeholder="YYYY"
-                                   BackgroundColor="Transparent"
-                                   TextColor="#333333"
-                                   PlaceholderColor="#888888" />
+                                   Keyboard="Numeric" Placeholder="YYYY"
+                                   Style="{StaticResource InputEntryStyle}" />
                         </Grid>
                     </Border>
-
                 </Grid>
 
-                <Label Text="Empresa (CNPJ):" TextColor="White" />
-                <Border BackgroundColor="White"
-                        Stroke="Transparent"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 8"
-                        Padding="4,0">
+                <!-- CNPJ -->
+                <Label Text="Empresa (CNPJ):" Style="{StaticResource FormLabelStyle}" />
+                <Border Style="{StaticResource InputBorderStyle}">
                     <Grid ColumnDefinitions="Auto,*">
-                        <Label Grid.Column="0" Text="🏢" FontSize="15"
-                               VerticalOptions="Center" Margin="6,0,4,0" />
+                        <Label Grid.Column="0" Text="🏢" Style="{StaticResource InputIconStyle}" />
                         <Entry Grid.Column="1" x:Name="cnpjEntry"
                                Keyboard="Numeric"
                                Placeholder="00.000.000/0000-00"
-                               BackgroundColor="Transparent"
-                               TextColor="#333333"
-                               PlaceholderColor="#888888"
-                               TextChanged="OnCnpjTextChanged" />
+                               TextChanged="OnCnpjTextChanged"
+                               Style="{StaticResource InputEntryStyle}" />
                     </Grid>
                 </Border>
 
-                <Label Text="Documento (Série):" TextColor="White" />
-                <Border BackgroundColor="White"
-                        Stroke="Transparent"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 8"
-                        Padding="4,0">
+                <!-- Série -->
+                <Label Text="Documento (Série):" Style="{StaticResource FormLabelStyle}" />
+                <Border Style="{StaticResource InputBorderStyle}">
                     <Grid ColumnDefinitions="Auto,*">
-                        <Label Grid.Column="0" Text="📄" FontSize="15"
-                               VerticalOptions="Center" Margin="6,0,4,0" />
+                        <Label Grid.Column="0" Text="📄" Style="{StaticResource InputIconStyle}" />
                         <Entry Grid.Column="1" x:Name="serieEntry"
                                Keyboard="Numeric"
-                               BackgroundColor="Transparent"
-                               TextColor="#333333"
-                               PlaceholderColor="#888888" />
+                               Style="{StaticResource InputEntryStyle}" />
                     </Grid>
                 </Border>
 
-                <Border Stroke="#8B7B6E" StrokeThickness="1"
+                <!-- Número da Nota -->
+                <Border Stroke="{StaticResource GroupBorderColor}"
+                        StrokeThickness="1"
                         StrokeShape="RoundRectangle 8"
                         Padding="10" Margin="0,4,0,4">
                     <VerticalStackLayout Spacing="8">
-                        <Label Text="Número da Nota:" TextColor="White" FontAttributes="Bold" />
-                        <Grid ColumnDefinitions="*,12,*" ColumnSpacing="0">
-
-                            <!-- Inicial -->
+                        <Label Text="Número da Nota:" Style="{StaticResource FormLabelStyle}" FontAttributes="Bold" />
+                        <Grid ColumnDefinitions="*,12,*">
                             <VerticalStackLayout Grid.Column="0" Spacing="4">
-                                <Label Text="Inicial:" TextColor="White" />
-                                <Border BackgroundColor="White"
-                                        Stroke="Transparent"
-                                        StrokeThickness="0"
-                                        StrokeShape="RoundRectangle 8"
-                                        Padding="4,0">
+                                <Label Text="Inicial:" Style="{StaticResource FormLabelStyle}" />
+                                <Border Style="{StaticResource InputBorderStyle}">
                                     <Grid ColumnDefinitions="Auto,*">
-                                        <Label Grid.Column="0" Text="→" FontSize="15"
-                                               TextColor="#555555"
-                                               VerticalOptions="Center" Margin="6,0,4,0" />
+                                        <Label Grid.Column="0" Text="→" TextColor="#555555" Style="{StaticResource InputIconStyle}" />
                                         <Entry Grid.Column="1" x:Name="numeroNotaInicialEntry"
                                                Keyboard="Numeric"
-                                               BackgroundColor="Transparent"
-                                               TextColor="#333333" />
+                                               Style="{StaticResource InputEntryStyle}" />
                                     </Grid>
                                 </Border>
                             </VerticalStackLayout>
-
-                            <!-- Final -->
                             <VerticalStackLayout Grid.Column="2" Spacing="4">
-                                <Label Text="Final:" TextColor="White" />
-                                <Border BackgroundColor="White"
-                                        Stroke="Transparent"
-                                        StrokeThickness="0"
-                                        StrokeShape="RoundRectangle 8"
-                                        Padding="4,0">
+                                <Label Text="Final:" Style="{StaticResource FormLabelStyle}" />
+                                <Border Style="{StaticResource InputBorderStyle}">
                                     <Grid ColumnDefinitions="Auto,*">
-                                        <Label Grid.Column="0" Text="→" FontSize="15"
-                                               TextColor="#555555"
-                                               VerticalOptions="Center" Margin="6,0,4,0" />
+                                        <Label Grid.Column="0" Text="→" TextColor="#555555" Style="{StaticResource InputIconStyle}" />
                                         <Entry Grid.Column="1" x:Name="numeroNotaFinalEntry"
                                                Keyboard="Numeric"
-                                               BackgroundColor="Transparent"
-                                               TextColor="#333333" />
+                                               Style="{StaticResource InputEntryStyle}" />
                                     </Grid>
                                 </Border>
                             </VerticalStackLayout>
-
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
 
+                <!-- Botões -->
                 <Grid ColumnDefinitions="*,8,*" Margin="0,8,0,0">
                     <Button Grid.Column="0"
                             Text="🗑️ Limpar Formulário"
@@ -189,7 +134,7 @@
                     <Button Grid.Column="2"
                             Text="⚙️ Gerar Chaves"
                             Clicked="OnGerarChavesClicked"
-                            BackgroundColor="#7B5EA7"
+                            BackgroundColor="{StaticResource AccentPurple}"
                             TextColor="White"
                             FontSize="12"
                             BorderWidth="0"
@@ -199,10 +144,12 @@
             </VerticalStackLayout>
         </Grid>
 
-        <!-- Painel direito: resultado -->
-        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*,Auto" BackgroundColor="#F2F2F2" Padding="20" RowSpacing="8">
+        <!-- ── Painel direito: resultado ── -->
+        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*,Auto"
+              BackgroundColor="{StaticResource ResultBackground}"
+              Padding="20" RowSpacing="8">
 
-            <!-- Tarefa 10: cabeçalho com título e botão Copiar Tudo -->
+            <!-- Cabeçalho -->
             <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
                 <Label Grid.Column="0"
                        Text="📄 Chaves NFe Geradas"
@@ -213,23 +160,18 @@
                         Text="📋 Copiar Tudo"
                         Clicked="OnCopiarTudoClicked"
                         BackgroundColor="Transparent"
-                        TextColor="#555555"
+                        TextColor="{StaticResource StatusText}"
                         FontSize="13"
                         BorderWidth="0"
                         Padding="0" />
             </Grid>
 
-            <!-- Tarefa 11: barra de metadados -->
+            <!-- Metadados -->
             <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
-                <Label Grid.Column="0"
-                       Text="Editor"
-                       TextColor="#888888"
-                       FontSize="12" />
-                <Label Grid.Column="1"
-                       x:Name="totalLabel"
+                <Label Grid.Column="0" Text="Editor" Style="{StaticResource MetaLabelStyle}" />
+                <Label Grid.Column="1" x:Name="totalLabel"
                        Text="Total: 0 chaves"
-                       TextColor="#888888"
-                       FontSize="12" />
+                       Style="{StaticResource MetaLabelStyle}" />
             </Grid>
 
             <!-- Editor -->
@@ -237,16 +179,15 @@
                     x:Name="chavesEditor"
                     IsReadOnly="True"
                     BackgroundColor="White"
-                    TextColor="#333333"
+                    TextColor="{StaticResource InputText}"
                     FontFamily="OpenSansRegular"
                     VerticalOptions="Fill" />
 
-            <!-- Tarefa 12: barra de status -->
+            <!-- Status -->
             <Label Grid.Row="3"
                    x:Name="statusLabel"
                    Text=""
-                   TextColor="#555555"
-                   FontSize="13" />
+                   Style="{StaticResource StatusLabelStyle}" />
 
         </Grid>
 
