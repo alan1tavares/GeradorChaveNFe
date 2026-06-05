@@ -28,6 +28,18 @@ public partial class MainPage : ContentPage
             entry.Text = formatted;
     }
 
+    private void OnLimparFormularioClicked(object sender, EventArgs e)
+    {
+        uFPicker.SelectedIndex = -1;
+        mesEntry.Text = string.Empty;
+        anoEntry.Text = string.Empty;
+        cnpjEntry.Text = string.Empty;
+        serieEntry.Text = string.Empty;
+        numeroNotaInicialEntry.Text = string.Empty;
+        numeroNotaFinalEntry.Text = string.Empty;
+        chavesEditor.Text = string.Empty;
+    }
+
     private void OnGerarChavesClicked(object sender, EventArgs e)
     {
         if (uFPicker.SelectedItem is not UFModel uf)

@@ -176,7 +176,25 @@
                     </VerticalStackLayout>
                 </Border>
 
-                <Button Text="Gerar Chaves" Clicked="OnGerarChavesClicked" Margin="0,8,0,0" />
+                <Grid ColumnDefinitions="*,8,*" Margin="0,8,0,0">
+                    <Button Grid.Column="0"
+                            Text="🗑️ Limpar Formulário"
+                            Clicked="OnLimparFormularioClicked"
+                            BackgroundColor="Transparent"
+                            BorderColor="White"
+                            BorderWidth="1"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="8" />
+                    <Button Grid.Column="2"
+                            Text="⚙️ Gerar Chaves"
+                            Clicked="OnGerarChavesClicked"
+                            BackgroundColor="#7B5EA7"
+                            TextColor="White"
+                            FontSize="12"
+                            BorderWidth="0"
+                            CornerRadius="8" />
+                </Grid>
 
             </VerticalStackLayout>
         </Grid>
