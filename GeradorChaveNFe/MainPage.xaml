@@ -2,57 +2,67 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeradorChaveNFe.MainPage">
-    <ScrollView>
-        <Grid ColumnDefinitions="280,*" RowDefinitions="*"
-              Padding="16" ColumnSpacing="16">
 
-            <!-- Painel esquerdo: formulário -->
-            <VerticalStackLayout Grid.Column="0" Spacing="6">
+    <Grid ColumnDefinitions="380,*" RowDefinitions="*" ColumnSpacing="0">
 
-                <Label Text="UF:" />
+        <!-- Painel esquerdo: formulário -->
+        <Grid Grid.Column="0" RowDefinitions="*" BackgroundColor="#6B5B4E">
+            <VerticalStackLayout Spacing="12" Padding="20" VerticalOptions="Start">
+
+                <!-- Tarefa 2: título do painel -->
+                <Label Text="Configurações do Gerador"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       Margin="0,0,0,8" />
+
+                <Label Text="UF:" TextColor="White" />
                 <Picker x:Name="uFPicker" Title="Selecione o estado"
                         ItemDisplayBinding="{Binding Nome}" />
 
                 <Grid ColumnDefinitions="*,8,*" RowDefinitions="Auto,Auto" RowSpacing="4">
-                    <Label Grid.Column="0" Grid.Row="0" Text="Mês:" />
+                    <Label Grid.Column="0" Grid.Row="0" Text="Mês:" TextColor="White" />
                     <Entry Grid.Column="0" Grid.Row="1" x:Name="mesEntry" Keyboard="Numeric" />
-                    <Label Grid.Column="2" Grid.Row="0" Text="Ano:" />
+                    <Label Grid.Column="2" Grid.Row="0" Text="Ano:" TextColor="White" />
                     <Entry Grid.Column="2" Grid.Row="1" x:Name="anoEntry" Keyboard="Numeric" />
                 </Grid>
 
-                <Label Text="CNPJ:" />
+                <Label Text="CNPJ:" TextColor="White" />
                 <Entry x:Name="cnpjEntry" Keyboard="Numeric" />
 
-                <Label Text="Série:" />
+                <Label Text="Série:" TextColor="White" />
                 <Entry x:Name="serieEntry" Keyboard="Numeric" />
 
-                <Border Stroke="Gray" StrokeThickness="1" Padding="8" Margin="0,4,0,4">
+                <Border Stroke="#8B7B6E" StrokeThickness="1" Padding="10" Margin="0,4,0,4">
                     <VerticalStackLayout Spacing="6">
-                        <Label Text="Número da Nota" FontAttributes="Bold" />
+                        <Label Text="Número da Nota:" TextColor="White" FontAttributes="Bold" />
                         <Grid ColumnDefinitions="*,8,*" RowDefinitions="Auto,Auto" RowSpacing="4">
-                            <Label Grid.Column="0" Grid.Row="0" Text="Inicial:" />
+                            <Label Grid.Column="0" Grid.Row="0" Text="Inicial:" TextColor="White" />
                             <Entry Grid.Column="0" Grid.Row="1" x:Name="numeroNotaInicialEntry" Keyboard="Numeric" />
-                            <Label Grid.Column="2" Grid.Row="0" Text="Final:" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="Final:" TextColor="White" />
                             <Entry Grid.Column="2" Grid.Row="1" x:Name="numeroNotaFinalEntry" Keyboard="Numeric" />
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
 
-                <Button Text="Gerar Chaves" Clicked="OnGerarChavesClicked" />
+                <Button Text="Gerar Chaves" Clicked="OnGerarChavesClicked" Margin="0,8,0,0" />
 
             </VerticalStackLayout>
+        </Grid>
 
-            <!-- Painel direito: resultado -->
-            <VerticalStackLayout Grid.Column="1" Spacing="6">
-                <Label Text="Chaves NFe:" />
-                <Editor x:Name="chavesEditor"
-                        IsReadOnly="True"
-                        BackgroundColor="#EEEEEE"
-                        AutoSize="TextChanges"
-                        MinimumHeightRequest="240"
-                        FontFamily="OpenSansRegular" />
-            </VerticalStackLayout>
+        <!-- Painel direito: resultado -->
+        <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto" BackgroundColor="#F2F2F2" Padding="20" RowSpacing="8">
+
+            <Label Grid.Row="0" Text="Chaves NFe:" FontAttributes="Bold" FontSize="18" />
+
+            <Editor Grid.Row="1"
+                    x:Name="chavesEditor"
+                    IsReadOnly="True"
+                    BackgroundColor="White"
+                    FontFamily="OpenSansRegular"
+                    VerticalOptions="Fill" />
 
         </Grid>
-    </ScrollView>
+
+    </Grid>
 </ContentPage>
